@@ -10,22 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class KozmondasApplication {
 
-	/*
-	@Autowired
-	private ProverbService proverbService;
-	*/
-
 	public static void main(String[] args) {
 		SpringApplication.run(KozmondasApplication.class, args);
 	}
 
-
-
-	/*
-	private void demo1(){
-		for(Proverb proverb : proverbService.findAllProverbs()){
-			System.out.println("Id:" +proverb.getId());
-		}
-	}
-	 */
 }
