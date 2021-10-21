@@ -10,11 +10,16 @@ import java.util.List;
 @Service
 public class ProverbServiceImpl implements ProverbService{
 
-    @Autowired
-    private ProverbRepository proverbRepository;
 
+    private final ProverbRepository proverbRepository;
+
+    @Autowired
+    public ProverbServiceImpl(ProverbRepository proverbRepository){
+        this.proverbRepository = proverbRepository;
+    }
     @Override
     public List<Proverb> readProverbs(){
         return proverbRepository.findAll();
     }
+
 }

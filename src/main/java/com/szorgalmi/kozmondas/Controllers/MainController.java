@@ -14,8 +14,11 @@ import java.util.List;
 @RequestMapping(path="/proverbs")
 public class MainController {
 
-    @Autowired
-    private ProverbService proverbService;
+   private final ProverbService proverbService;
+
+   public MainController(ProverbService proverbService){
+       this.proverbService = proverbService;
+   }
 
     @GetMapping(path="", produces= MediaType.APPLICATION_JSON_VALUE)
     public List<Proverb> getAllProverbs(){
