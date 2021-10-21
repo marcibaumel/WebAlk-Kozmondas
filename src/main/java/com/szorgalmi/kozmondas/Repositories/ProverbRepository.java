@@ -12,4 +12,5 @@ import java.util.Optional;
 @Repository
 public interface ProverbRepository {
     List<Proverb> findAllProverbs() throws SQLException, ClassNotFoundException;
+    void save(Proverb proverb);
 }

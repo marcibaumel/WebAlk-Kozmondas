@@ -24,6 +24,11 @@ public class ProverbServiceImpl implements ProverbService{
         return proverbRepository.findAllProverbs();
     }
 
+    @Override
+    public void saveProverb(Proverb proverb) {
+        proverbRepository.save(proverb);
+    }
+
     /*
     @Override
     public Proverb getProverbById(Integer id) {

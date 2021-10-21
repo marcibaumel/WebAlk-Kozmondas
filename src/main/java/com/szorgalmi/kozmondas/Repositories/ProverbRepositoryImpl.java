@@ -46,6 +46,22 @@ public class ProverbRepositoryImpl implements ProverbRepository{
             Proverb proverb = new Proverb(rs.getInt("id"), rs.getString("proverb_content"));
             proverbsList.add(proverb);
         }
+        DisConnect();
         return proverbsList;
+    }
+
+    @Override
+    public void save(Proverb proverb) {
+        Connect();
+        String sqlp = "insert into proverb values ("+proverb.getId()+",'"+proverb.getProverbContent()+"');";
+        try{
+            s=conn.createStatement();
+            s.execute(sqlp);
+            System.out.println("\nProverb recorded");
+
+        }catch(SQLException e){
+            System.out.println("JDB Insert: "+ e.getMessage());
+        }
+        DisConnect();
     }
 }

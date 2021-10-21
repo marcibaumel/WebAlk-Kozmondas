@@ -31,11 +31,12 @@ public class ProverbController {
     public Proverb getAccountById(@PathVariable("id") Integer id){
         return proverbService.getProverbById(id);
     }
+*/
 
     @PostMapping(path = "")
     public void saveProverb(@RequestBody @Valid Proverb proverb){
        proverbService.saveProverb(proverb);
     }
-    */
+
 
 }
