@@ -16,6 +16,7 @@ public class ProverbRepositoryImpl implements ProverbRepository{
     private ResultSet rs= null;
     private PreparedStatement ps;
 
+    @Override
     public void Connect() {
         try {
             String url= new File("proverb.db").getAbsolutePath();
@@ -26,6 +27,7 @@ public class ProverbRepositoryImpl implements ProverbRepository{
         }
     }
 
+    @Override
     public void DisConnect(){
         try{
             conn.close();

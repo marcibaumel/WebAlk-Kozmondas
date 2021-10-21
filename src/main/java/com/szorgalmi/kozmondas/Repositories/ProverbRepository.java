@@ -11,6 +11,8 @@ import java.util.Optional;
 //TODO make a connection, find all, find by id külőn branch-en
 @Repository
 public interface ProverbRepository {
+    void Connect();
+    void DisConnect();
     List<Proverb> findAllProverbs() throws SQLException, ClassNotFoundException;
     void save(Proverb proverb);
 }
