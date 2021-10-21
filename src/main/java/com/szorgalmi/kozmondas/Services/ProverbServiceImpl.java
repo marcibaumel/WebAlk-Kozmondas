@@ -17,9 +17,31 @@ public class ProverbServiceImpl implements ProverbService{
     public ProverbServiceImpl(ProverbRepository proverbRepository){
         this.proverbRepository = proverbRepository;
     }
+
     @Override
     public List<Proverb> readProverbs(){
         return proverbRepository.findAll();
     }
+
+    @Override
+    public Proverb getProverbById(Integer id) {
+        return proverbRepository.findById(id).get();
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        proverbRepository.deleteById(id);
+    }
+
+    @Override
+    public void saveProverb(Proverb proverb) {
+        proverbRepository.save(proverb);
+    }
+
+    @Override
+    public void deleteAll() {
+        proverbRepository.deleteAll();
+    }
+
 
 }
