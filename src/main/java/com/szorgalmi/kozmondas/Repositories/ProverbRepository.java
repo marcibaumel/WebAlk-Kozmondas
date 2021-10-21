@@ -1,9 +1,10 @@
 package com.szorgalmi.kozmondas.Repositories;
 
 import com.szorgalmi.kozmondas.Entity.Proverb;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("proverbRepository")
-public interface ProverbRepository extends CrudRepository<Proverb, Integer> {
+@Repository
+public interface ProverbRepository extends JpaRepository<Proverb, Integer> {
+
 }
