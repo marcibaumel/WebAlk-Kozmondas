@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -19,11 +20,13 @@ public class ProverbController {
        this.proverbService = proverbService;
    }
 
-    @GetMapping(path="", produces= MediaType.APPLICATION_JSON_VALUE)
-    public List<Proverb> getAllProverbs(){
-        return proverbService.readProverbs();
-    }
 
+    @GetMapping(path="", produces= MediaType.APPLICATION_JSON_VALUE)
+    public List<Proverb> getAllProverbs() throws SQLException, ClassNotFoundException {
+        return proverbService.readProverbs();
+
+    }
+/*
     @GetMapping(path = "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
     public Proverb getAccountById(@PathVariable("id") Integer id){
         return proverbService.getProverbById(id);
@@ -33,5 +36,6 @@ public class ProverbController {
     public void saveProverb(@RequestBody @Valid Proverb proverb){
        proverbService.saveProverb(proverb);
     }
+    */
 
 }

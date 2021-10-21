@@ -11,9 +11,14 @@ public class Proverb {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     private Integer id;
-
+    //TODO kisbbetűre ProverbContent
     @NotNull
     private String ProverbContent;
+
+    public Proverb(Integer id, String ProverbContent) {
+        this.id = id;
+        this.ProverbContent = ProverbContent;
+    }
 
     public Integer getId() {
         return id;

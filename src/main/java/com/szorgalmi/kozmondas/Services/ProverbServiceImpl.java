@@ -5,6 +5,7 @@ import com.szorgalmi.kozmondas.Repositories.ProverbRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -19,14 +20,16 @@ public class ProverbServiceImpl implements ProverbService{
     }
 
     @Override
-    public List<Proverb> readProverbs(){
-        return proverbRepository.findAll();
+    public List<Proverb> readProverbs() throws SQLException, ClassNotFoundException {
+        return proverbRepository.findAllProverbs();
     }
 
+    /*
     @Override
     public Proverb getProverbById(Integer id) {
         return proverbRepository.findById(id).get();
     }
+
 
     @Override
     public void deleteById(Integer id) {
@@ -43,5 +46,6 @@ public class ProverbServiceImpl implements ProverbService{
         proverbRepository.deleteAll();
     }
 
+     */
 
 }
