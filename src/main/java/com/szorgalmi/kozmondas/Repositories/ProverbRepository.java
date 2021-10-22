@@ -14,5 +14,7 @@ public interface ProverbRepository {
     void Connect();
     void DisConnect();
     List<Proverb> findAllProverbs() throws SQLException, ClassNotFoundException;
-    void save(Proverb proverb);
+    Proverb findProverbById(Integer id) throws SQLException;
+    void deleteById(Integer id);
+    Long save(Proverb proverb) throws SQLException, ClassNotFoundException;
 }

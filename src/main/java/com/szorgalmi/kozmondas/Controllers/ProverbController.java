@@ -26,16 +26,21 @@ public class ProverbController {
         return proverbService.readProverbs();
 
     }
-/*
+
     @GetMapping(path = "/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public Proverb getAccountById(@PathVariable("id") Integer id){
+    public Proverb getProverbById(@PathVariable("id") Integer id) throws SQLException {
         return proverbService.getProverbById(id);
     }
-*/
+
 
     @PostMapping(path = "")
     public void saveProverb(@RequestBody @Valid Proverb proverb){
        proverbService.saveProverb(proverb);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void deleteProverbById(@PathVariable("id") Integer id) throws SQLException {
+        proverbService.deleteById(id);
     }
 
 

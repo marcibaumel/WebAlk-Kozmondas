@@ -1,5 +1,7 @@
 package com.szorgalmi.kozmondas.Entity;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -10,14 +12,18 @@ public class Proverb {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
+    @UniqueElements
     private Integer id;
-    //TODO kisbbetűre ProverbContent
     @NotNull
-    private String ProverbContent;
+    private String proverbContent;
 
     public Proverb(Integer id, String ProverbContent) {
         this.id = id;
-        this.ProverbContent = ProverbContent;
+        this.proverbContent = ProverbContent;
+    }
+
+    public Proverb() {
+
     }
 
     public Integer getId() {
@@ -29,10 +35,10 @@ public class Proverb {
     }
 
     public String getProverbContent() {
-        return ProverbContent;
+        return proverbContent;
     }
 
     public void setProverbContent(String proverbContent) {
-        ProverbContent = proverbContent;
+        this.proverbContent = proverbContent;
     }
 }

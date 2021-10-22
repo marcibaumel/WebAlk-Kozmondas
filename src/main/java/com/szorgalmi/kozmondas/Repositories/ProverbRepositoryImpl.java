@@ -11,6 +11,7 @@ import java.util.List;
 @Component
 public class ProverbRepositoryImpl implements ProverbRepository{
 
+
     private Statement s = null;
     private Connection conn= null;
     private ResultSet rs= null;
@@ -26,6 +27,7 @@ public class ProverbRepositoryImpl implements ProverbRepository{
             System.out.println("Not good registration");
         }
     }
+
 
     @Override
     public void DisConnect(){
@@ -53,17 +55,60 @@ public class ProverbRepositoryImpl implements ProverbRepository{
     }
 
     @Override
-    public void save(Proverb proverb) {
+    public Proverb findProverbById(Integer id) throws SQLException {
         Connect();
-        String sqlp = "insert into proverb values ("+proverb.getId()+",'"+proverb.getProverbContent()+"');";
+        s = conn.createStatement();
+        String sql = "Select * from proverb where id="+id+";";
+        rs = s.executeQuery(sql);
+        Proverb proverb = new Proverb();
+        while (rs.next()) {
+            proverb = new Proverb(rs.getInt("id"), rs.getString("proverb_content"));
+        }
+        DisConnect();
+        return proverb;
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        Connect();
+        String sqlp="delete from proverb where id="+id+";";
         try{
             s=conn.createStatement();
             s.execute(sqlp);
-            System.out.println("\nProverb recorded");
+            System.out.println("Delete OK!");
 
         }catch(SQLException e){
-            System.out.println("JDB Insert: "+ e.getMessage());
+            System.out.println("JDB delete: "+ e.getMessage());
         }
         DisConnect();
     }
+
+
+    @Override
+    public Long save(Proverb proverb) throws SQLException, ClassNotFoundException {
+        int found = findProverbByGivenIdCheck(proverb.getId());
+
+        /*
+        if (found != -1) {
+            Proverb givenProverb = findAllProverbs().get(found);
+            givenProverb.setId(proverb.getId());
+            givenProverb.setProverbContent(proverb.getProverbContent());
+        } else {
+            articles.add(articleDto);
+        }
+        */
+        return null;
+    }
+
+    public int findProverbByGivenIdCheck(Integer id) throws SQLException, ClassNotFoundException {
+        int found = -1;
+        for (int i = 0; i < findAllProverbs().size(); i++) {
+            if (findAllProverbs().get(i).getId().equals(id)) {
+                found = i;
+                break;
+            }
+        }
+        return found;
+    }
+
 }

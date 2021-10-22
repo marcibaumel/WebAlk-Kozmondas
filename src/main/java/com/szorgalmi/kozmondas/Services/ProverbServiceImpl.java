@@ -25,14 +25,14 @@ public class ProverbServiceImpl implements ProverbService{
     }
 
     @Override
-    public void saveProverb(Proverb proverb) {
+    public void saveProverb(Proverb proverb) throws SQLException, ClassNotFoundException {
         proverbRepository.save(proverb);
     }
 
-    /*
+
     @Override
-    public Proverb getProverbById(Integer id) {
-        return proverbRepository.findById(id).get();
+    public Proverb getProverbById(Integer id) throws SQLException {
+        return proverbRepository.findProverbById(id);
     }
 
 
@@ -41,16 +41,11 @@ public class ProverbServiceImpl implements ProverbService{
         proverbRepository.deleteById(id);
     }
 
+    /*
     @Override
     public void saveProverb(Proverb proverb) {
         proverbRepository.save(proverb);
     }
-
-    @Override
-    public void deleteAll() {
-        proverbRepository.deleteAll();
-    }
-
-     */
+   */
 
 }
