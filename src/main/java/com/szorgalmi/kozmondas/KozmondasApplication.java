@@ -14,4 +14,5 @@ public class KozmondasApplication {
 		SpringApplication.run(KozmondasApplication.class, args);
 	}
 
+
 }
