@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-//TODO make a connection, find all, find by id külőn branch-en
 @Repository
 public interface ProverbRepository extends JpaRepository<Proverb, Integer> { }
