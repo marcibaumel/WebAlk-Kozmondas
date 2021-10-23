@@ -34,7 +34,7 @@ public class ProverbController {
 
 
     @PostMapping(path = "")
-    public void saveProverb(@RequestBody @Valid Proverb proverb){
+    public void saveProverb(@RequestBody @Valid Proverb proverb) throws SQLException, ClassNotFoundException {
        proverbService.saveProverb(proverb);
     }
 

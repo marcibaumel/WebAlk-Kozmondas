@@ -42,6 +42,7 @@ public class ProverbRepositoryImpl implements ProverbRepository{
     @Override
     public List<Proverb> findAllProverbs() throws SQLException, ClassNotFoundException {
         Connect();
+
         s = conn.createStatement();
         String sql = "Select * from proverb";
         rs = s.executeQuery(sql);
@@ -86,17 +87,17 @@ public class ProverbRepositoryImpl implements ProverbRepository{
 
     @Override
     public Long save(Proverb proverb) throws SQLException, ClassNotFoundException {
-        int found = findProverbByGivenIdCheck(proverb.getId());
+        Connect();
+        String sqlp = "insert into proverb values ("+proverb.getId()+", '"+proverb.getProverbContent()+"');";
+        try{
+            s=conn.createStatement();
+            s.execute(sqlp);
+            System.out.println("\nNew record!");
 
-        /*
-        if (found != -1) {
-            Proverb givenProverb = findAllProverbs().get(found);
-            givenProverb.setId(proverb.getId());
-            givenProverb.setProverbContent(proverb.getProverbContent());
-        } else {
-            articles.add(articleDto);
+        }catch(SQLException e){
+            System.out.println("JDB Insert: "+ e.getMessage());
         }
-        */
+        DisConnect();
         return null;
     }
 

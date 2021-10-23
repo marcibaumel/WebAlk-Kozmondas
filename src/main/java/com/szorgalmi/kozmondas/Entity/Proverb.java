@@ -12,9 +12,7 @@ public class Proverb {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @UniqueElements
     private Integer id;
-    @NotNull
     private String proverbContent;
 
     public Proverb(Integer id, String ProverbContent) {
