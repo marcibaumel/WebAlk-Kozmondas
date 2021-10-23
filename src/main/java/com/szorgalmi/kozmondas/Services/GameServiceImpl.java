@@ -30,6 +30,8 @@ public class GameServiceImpl implements GameService {
         String randomProverb = proverbRepository.getRandomProverb().getProverbContent();
         SecureRandom secureRandom = new SecureRandom();
         randomStudent = secureRandom.nextInt(maxStudentNumber - 1) + 1;
-        return randomStudent+"----"+randomProverb;
+        String result = randomStudent+"----"+randomProverb;
+        System.out.println(result);
+        return result;
     }
 }
