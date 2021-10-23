@@ -4,19 +4,15 @@ import com.szorgalmi.kozmondas.Entity.Proverb;
 import com.szorgalmi.kozmondas.Repositories.ProverbRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class ProverbServiceImpl implements ProverbService{
 
-
-    private final ProverbRepository proverbRepository;
-
     @Autowired
-    public ProverbServiceImpl(ProverbRepository proverbRepository){
-        this.proverbRepository = proverbRepository;
-    }
+    private ProverbRepository proverbRepository;
 
     @Override
     public List<Proverb> readProverbs(){
@@ -33,9 +29,17 @@ public class ProverbServiceImpl implements ProverbService{
         proverbRepository.deleteById(id);
     }
 
-    @Override
-    public void saveProverb(Proverb proverb) {
-        proverbRepository.save(proverb);
+    @Transactional
+    public String createProverb(Proverb proverb) {
+      try {
+          if (!proverbRepository.existsByProverbContent(proverb.getProverbContent())) {
+              proverb.setId(null == proverbRepository.findMaxId() ? 0 : proverbRepository.findMaxId() + 1);
+              proverbRepository.save(proverb);
+              return "Proverb saved";
+          } else {
+              return "Already existing data";
+          }
+      }catch (Exception e){ throw e; }
     }
 
     @Override

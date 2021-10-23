@@ -13,7 +13,7 @@ public class Proverb {
     private Integer id;
 
     @NotNull
-    private String ProverbContent;
+    private String proverbContent;
 
     public Integer getId() {
         return id;
@@ -24,10 +24,10 @@ public class Proverb {
     }
 
     public String getProverbContent() {
-        return ProverbContent;
+        return proverbContent;
     }
 
     public void setProverbContent(String proverbContent) {
-        ProverbContent = proverbContent;
+        proverbContent = proverbContent;
     }
 }

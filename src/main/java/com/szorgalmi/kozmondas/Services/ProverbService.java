@@ -8,6 +8,6 @@ public interface ProverbService {
     List<Proverb> readProverbs();
     Proverb getProverbById(Integer id);
     void deleteById(Integer id);
-    void saveProverb(Proverb proverb);
+    String createProverb(Proverb proverb);
     void deleteAll();
 }

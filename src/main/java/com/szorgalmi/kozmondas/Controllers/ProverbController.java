@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,9 +14,14 @@ public class ProverbController {
 
    private final ProverbService proverbService;
 
-   public ProverbController(ProverbService proverbService){
+    public ProverbController(ProverbService proverbService){
        this.proverbService = proverbService;
-   }
+    }
+
+    @RequestMapping(value = "info", method = RequestMethod.GET)
+    public String info(){
+        return "The application is up...";
+    }
 
     @GetMapping(path="", produces= MediaType.APPLICATION_JSON_VALUE)
     public List<Proverb> getAllProverbs(){
@@ -29,9 +33,12 @@ public class ProverbController {
         return proverbService.getProverbById(id);
     }
 
-    @PostMapping(path = "")
-    public void saveProverb(@RequestBody @Valid Proverb proverb){
-       proverbService.saveProverb(proverb);
+
+    @RequestMapping(value = "create", method = RequestMethod.POST)
+    public String createStudent(@RequestBody Proverb proverb){
+         return proverbService.createProverb(proverb);
     }
+
+    
 
 }
