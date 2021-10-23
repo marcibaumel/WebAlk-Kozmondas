@@ -29,7 +29,7 @@ public class GameServiceImpl implements GameService {
     public String generatePlay(int maxStudentNumber) throws SQLException, ClassNotFoundException {
         String randomProverb = proverbRepository.getRandomProverb().getProverbContent();
         SecureRandom secureRandom = new SecureRandom();
-        randomStudent = secureRandom.nextInt(maxStudentNumber - 1) + 1;
+        randomStudent = secureRandom.nextInt(maxStudentNumber)+1;
         String result = randomStudent+"----"+randomProverb;
         System.out.println(result);
         return result;
