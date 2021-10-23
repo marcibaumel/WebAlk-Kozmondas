@@ -17,4 +17,5 @@ public interface ProverbRepository {
     Proverb findProverbById(Integer id) throws SQLException;
     void deleteById(Integer id);
     Long save(Proverb proverb) throws SQLException, ClassNotFoundException;
+    Proverb getRandomProverb() throws SQLException, ClassNotFoundException;
 }

@@ -43,5 +43,9 @@ public class ProverbController {
         proverbService.deleteById(id);
     }
 
+    @GetMapping(path = "/getRandomProverb", produces= MediaType.APPLICATION_JSON_VALUE)
+    public Proverb getRandomProverb() throws SQLException, ClassNotFoundException {
+        return proverbService.getRandomProverb();
+    }
 
 }

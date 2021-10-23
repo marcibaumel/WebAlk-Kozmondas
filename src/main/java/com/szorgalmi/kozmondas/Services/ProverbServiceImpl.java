@@ -29,6 +29,11 @@ public class ProverbServiceImpl implements ProverbService{
         proverbRepository.save(proverb);
     }
 
+    @Override
+    public Proverb getRandomProverb() throws SQLException, ClassNotFoundException {
+        return proverbRepository.getRandomProverb();
+    }
+
 
     @Override
     public Proverb getProverbById(Integer id) throws SQLException {
@@ -36,16 +41,10 @@ public class ProverbServiceImpl implements ProverbService{
     }
 
 
+
     @Override
     public void deleteById(Integer id) {
         proverbRepository.deleteById(id);
     }
-
-    /*
-    @Override
-    public void saveProverb(Proverb proverb) {
-        proverbRepository.save(proverb);
-    }
-   */
 
 }

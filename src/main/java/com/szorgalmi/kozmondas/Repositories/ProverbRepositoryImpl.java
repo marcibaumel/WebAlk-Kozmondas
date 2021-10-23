@@ -4,6 +4,7 @@ import com.szorgalmi.kozmondas.Entity.Proverb;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.security.SecureRandom;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +100,13 @@ public class ProverbRepositoryImpl implements ProverbRepository{
         }
         DisConnect();
         return null;
+    }
+
+    @Override
+    public Proverb getRandomProverb() throws SQLException, ClassNotFoundException {
+        SecureRandom secureRandom = new SecureRandom();
+        int randomWithSecureRandomWithinARange = secureRandom.nextInt(findAllProverbs().size() - 1) + 1;
+        return findProverbById(randomWithSecureRandomWithinARange);
     }
 
     public int findProverbByGivenIdCheck(Integer id) throws SQLException, ClassNotFoundException {
