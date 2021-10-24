@@ -105,7 +105,7 @@ public class ProverbRepositoryImpl implements ProverbRepository{
     @Override
     public Proverb getRandomProverb() throws SQLException, ClassNotFoundException {
         SecureRandom secureRandom = new SecureRandom();
-        int randomWithSecureRandomWithinARange = secureRandom.nextInt(findAllProverbs().size() - 1) + 1;
+        int randomWithSecureRandomWithinARange = secureRandom.nextInt(findAllProverbs().size() +1) ;
         return findProverbById(randomWithSecureRandomWithinARange);
     }
 
